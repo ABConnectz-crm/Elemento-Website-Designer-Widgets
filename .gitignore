@@ -1,0 +1,37 @@
+# WordPress
+*.log
+.htaccess
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node modules (if using build tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Vendor directory
+vendor/
+composer.lock
+
+# Environment files
+.env
+.env.local

@@ -1,0 +1,563 @@
+/**
+ * Widget Specific Styles
+ * Styles for individual EGW widgets
+ */
+
+/* ==========================================================================
+   Text Animation Widgets
+   ========================================================================== */
+
+/* Glassmorphism Text Widget */
+.egw-glassmorphism-text-widget {
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.egw-glassmorphism-text-widget .egw-text-content {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* Staggered Text Widget */
+.egw-staggered-text-widget {
+    padding: 20px 0;
+}
+
+.egw-staggered-text-widget .egw-stagger-container {
+    font-size: 2.5em;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Split Text Widget */
+.egw-split-text-widget {
+    padding: 20px 0;
+}
+
+.egw-split-text-widget .egw-split-container {
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* Gradient Text Widget */
+.egw-gradient-text-widget {
+    padding: 20px 0;
+}
+
+.egw-gradient-text-widget .egw-gradient-text-content {
+    font-size: 3.5em;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+/* Typewriter Text Widget */
+.egw-typewriter-widget {
+    padding: 30px 0;
+}
+
+.egw-typewriter-widget .egw-typewriter-text {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5em;
+    min-height: 1.5em;
+}
+
+/* Morphing Text Widget */
+.egw-morphing-text-widget {
+    padding: 30px 0;
+    min-height: 100px;
+}
+
+.egw-morphing-text-widget .egw-morph-container {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Image Animation Widgets
+   ========================================================================== */
+
+/* Parallax Image Widget */
+.egw-parallax-image-widget {
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.egw-parallax-image-widget .egw-parallax-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Masked Image Widget */
+.egw-masked-image-widget {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.egw-masked-image-widget .egw-image-mask-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Reveal Image Widget */
+.egw-reveal-image-widget {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.egw-reveal-image-widget .egw-reveal-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Zoom Pan Image Widget */
+.egw-zoom-pan-widget {
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.egw-zoom-pan-widget img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   Background Widgets
+   ========================================================================== */
+
+/* Particle Background Widget */
+.egw-particle-background-widget {
+    position: relative;
+    min-height: 400px;
+    padding: 60px 40px;
+}
+
+.egw-particle-background-widget .egw-particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.egw-particle-background-widget .egw-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Gradient Background Widget */
+.egw-gradient-background-widget {
+    position: relative;
+    min-height: 400px;
+    padding: 60px 40px;
+    overflow: hidden;
+}
+
+.egw-gradient-background-widget .egw-gradient-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.egw-gradient-background-widget .egw-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+/* Wave Background Widget */
+.egw-wave-background-widget {
+    position: relative;
+    min-height: 300px;
+    padding: 60px 40px;
+    overflow: hidden;
+}
+
+.egw-wave-background-widget .egw-wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 0;
+}
+
+.egw-wave-background-widget .egw-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   UI Element Widgets
+   ========================================================================== */
+
+/* Icon Box Widget */
+.egw-icon-box-widget {
+    padding: 15px;
+}
+
+.egw-icon-box-widget .egw-icon-box-container {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.egw-icon-box-widget .egw-icon-wrapper {
+    margin-bottom: 20px;
+}
+
+.egw-icon-box-widget .egw-icon {
+    font-size: 60px;
+    color: #667eea;
+}
+
+.egw-icon-box-widget .egw-icon-box-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.egw-icon-box-widget .egw-icon-box-description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+.egw-icon-box-widget .egw-icon-box-container:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.egw-icon-box-widget .egw-icon-box-container:hover .egw-icon {
+    color: white;
+}
+
+.egw-icon-box-widget .egw-icon-box-container:hover .egw-icon-box-title,
+.egw-icon-box-widget .egw-icon-box-container:hover .egw-icon-box-description {
+    color: white;
+}
+
+/* Flip Box Widget */
+.egw-flip-box-widget {
+    height: 400px;
+    perspective: 1000px;
+}
+
+.egw-flip-box-widget .egw-flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.egw-flip-box-widget .egw-flip-box-front,
+.egw-flip-box-widget .egw-flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.egw-flip-box-widget .egw-flip-box-front {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.egw-flip-box-widget .egw-flip-box-back {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.egw-flip-box-widget .egw-flip-title {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.egw-flip-box-widget .egw-flip-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Marquee Widget */
+.egw-marquee-widget {
+    padding: 30px 0;
+    overflow: hidden;
+}
+
+.egw-marquee-widget .egw-marquee-container {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.egw-marquee-widget .egw-marquee-item {
+    display: inline-block;
+    padding: 0 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Timeline Widget */
+.egw-timeline-widget {
+    padding: 60px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.egw-timeline-widget .egw-timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    transform: translateX(-50%);
+}
+
+.egw-timeline-widget .egw-timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    padding: 0 60px;
+}
+
+.egw-timeline-widget .egw-timeline-item:nth-child(odd) {
+    text-align: right;
+    padding-right: calc(50% + 60px);
+    padding-left: 0;
+}
+
+.egw-timeline-widget .egw-timeline-item:nth-child(even) {
+    text-align: left;
+    padding-left: calc(50% + 60px);
+    padding-right: 0;
+}
+
+.egw-timeline-widget .egw-timeline-marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: #667eea;
+    border: 4px solid white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    z-index: 2;
+}
+
+.egw-timeline-widget .egw-timeline-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.egw-timeline-widget .egw-timeline-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.egw-timeline-widget .egw-timeline-date {
+    font-size: 0.9em;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.egw-timeline-widget .egw-timeline-description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Comparison Slider Widget */
+.egw-comparison-slider-widget {
+    position: relative;
+    max-width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.egw-comparison-slider-widget .egw-comparison-before,
+.egw-comparison-slider-widget .egw-comparison-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.egw-comparison-slider-widget .egw-comparison-before {
+    z-index: 2;
+}
+
+.egw-comparison-slider-widget .egw-comparison-before img,
+.egw-comparison-slider-widget .egw-comparison-after img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.egw-comparison-slider-widget .egw-comparison-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: white;
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: col-resize;
+}
+
+.egw-comparison-slider-widget .egw-comparison-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: col-resize;
+}
+
+.egw-comparison-slider-widget .egw-comparison-handle::before,
+.egw-comparison-slider-widget .egw-comparison-handle::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.egw-comparison-slider-widget .egw-comparison-handle::before {
+    border-width: 8px 12px 8px 0;
+    border-color: transparent #666 transparent transparent;
+    left: 12px;
+}
+
+.egw-comparison-slider-widget .egw-comparison-handle::after {
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #666;
+    right: 12px;
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .egw-glassmorphism-text-widget .egw-text-content {
+        font-size: 1.5em;
+    }
+
+    .egw-staggered-text-widget .egw-stagger-container {
+        font-size: 2em;
+    }
+
+    .egw-split-text-widget .egw-split-container {
+        font-size: 2.5em;
+    }
+
+    .egw-gradient-text-widget .egw-gradient-text-content {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .egw-glassmorphism-text-widget {
+        padding: 30px 20px;
+    }
+
+    .egw-glassmorphism-text-widget .egw-text-content {
+        font-size: 1.3em;
+    }
+
+    .egw-staggered-text-widget .egw-stagger-container {
+        font-size: 1.5em;
+    }
+
+    .egw-split-text-widget .egw-split-container {
+        font-size: 2em;
+    }
+
+    .egw-gradient-text-widget .egw-gradient-text-content {
+        font-size: 2em;
+    }
+
+    .egw-parallax-image-widget {
+        height: 300px;
+    }
+
+    .egw-icon-box-widget .egw-icon-box-container {
+        padding: 30px 20px;
+    }
+
+    .egw-icon-box-widget .egw-icon {
+        font-size: 48px;
+    }
+
+    .egw-flip-box-widget {
+        height: 300px;
+    }
+
+    .egw-timeline-widget .egw-timeline-line {
+        left: 30px;
+    }
+
+    .egw-timeline-widget .egw-timeline-item {
+        padding: 0 0 0 60px !important;
+        text-align: left !important;
+    }
+
+    .egw-timeline-widget .egw-timeline-marker {
+        left: 30px;
+    }
+
+    .egw-comparison-slider-widget {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .egw-marquee-widget .egw-marquee-item {
+        font-size: 1.5em;
+        padding: 0 15px;
+    }
+
+    .egw-typewriter-widget .egw-typewriter-text {
+        font-size: 1.2em;
+    }
+}

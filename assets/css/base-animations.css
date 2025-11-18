@@ -1,0 +1,449 @@
+/**
+ * Base Animations CSS
+ * Core animation styles and utilities for EGW widgets
+ */
+
+/* ==========================================================================
+   Global Animations Setup
+   ========================================================================== */
+
+:root {
+    --egw-transition-duration: 0.3s;
+    --egw-transition-easing: ease-in-out;
+    --egw-animation-distance: 100px;
+}
+
+/* Widget base class */
+.egw-widget {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation item wrapper */
+.egw-anim-item {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+/* Preserve word integrity */
+.egw-preserve-words .egw-anim-item {
+    white-space: nowrap;
+    word-break: keep-all;
+}
+
+/* ==========================================================================
+   Glassmorphism Effects
+   ========================================================================== */
+
+.egw-glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.egw-glassmorphism-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Text Animation Styles
+   ========================================================================== */
+
+/* Gradient text */
+.egw-gradient-text {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+}
+
+.egw-gradient-text-animated {
+    animation: egw-gradient-shift 3s ease infinite;
+}
+
+@keyframes egw-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Split text containers */
+.egw-split-text {
+    overflow: hidden;
+}
+
+.egw-word, .egw-char {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.egw-word {
+    white-space: nowrap;
+}
+
+/* Typewriter effect */
+.egw-typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation: egw-typewriter-blink 0.75s step-end infinite;
+}
+
+@keyframes egw-typewriter-blink {
+    from, to { border-color: transparent; }
+    50% { border-color: currentColor; }
+}
+
+/* 3D text */
+.egw-text-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* ==========================================================================
+   Image Animation Styles
+   ========================================================================== */
+
+/* Parallax container */
+.egw-parallax-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-parallax-image {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+/* Masked image */
+.egw-masked-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-masked-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Clip path animations */
+.egw-clip-circle {
+    clip-path: circle(50% at 50% 50%);
+}
+
+.egw-clip-polygon {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* Image reveal overlay */
+.egw-reveal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    transform-origin: left;
+    will-change: transform;
+}
+
+/* Zoom and pan container */
+.egw-zoom-pan {
+    overflow: hidden;
+    position: relative;
+}
+
+.egw-zoom-pan img {
+    transition: transform 0.6s ease-out;
+    will-change: transform;
+}
+
+.egw-zoom-pan:hover img {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   Background Animations
+   ========================================================================== */
+
+/* Particle background */
+.egw-particle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.egw-particle-bg canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Gradient background */
+.egw-gradient-bg {
+    position: relative;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: egw-gradient-anim 15s ease infinite;
+}
+
+@keyframes egw-gradient-anim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Wave background */
+.egw-wave-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    animation: egw-wave-anim 10s linear infinite;
+}
+
+@keyframes egw-wave-anim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   UI Element Styles
+   ========================================================================== */
+
+/* Icon box */
+.egw-icon-box {
+    position: relative;
+    text-align: center;
+    padding: 30px;
+    transition: all var(--egw-transition-duration) var(--egw-transition-easing);
+}
+
+.egw-icon-box .egw-icon {
+    display: inline-block;
+    font-size: 48px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.egw-icon-box:hover {
+    transform: translateY(-10px);
+}
+
+/* Flip box */
+.egw-flip-box {
+    perspective: 1000px;
+    position: relative;
+}
+
+.egw-flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.egw-flip-box:hover .egw-flip-box-inner,
+.egw-flip-box.egw-flipped .egw-flip-box-inner {
+    transform: rotateY(180deg);
+}
+
+.egw-flip-box-front,
+.egw-flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.egw-flip-box-back {
+    transform: rotateY(180deg);
+}
+
+/* Flip vertical */
+.egw-flip-box.egw-flip-vertical:hover .egw-flip-box-inner,
+.egw-flip-box.egw-flip-vertical.egw-flipped .egw-flip-box-inner {
+    transform: rotateX(180deg);
+}
+
+.egw-flip-box.egw-flip-vertical .egw-flip-box-back {
+    transform: rotateX(180deg);
+}
+
+/* Marquee */
+.egw-marquee {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.egw-marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: egw-marquee-scroll 20s linear infinite;
+}
+
+.egw-marquee:hover .egw-marquee-content {
+    animation-play-state: paused;
+}
+
+@keyframes egw-marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Timeline */
+.egw-timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.egw-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: currentColor;
+    transform: translateX(-50%);
+}
+
+.egw-timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.egw-timeline-marker {
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Comparison Slider */
+.egw-comparison-slider {
+    position: relative;
+    overflow: hidden;
+    cursor: col-resize;
+}
+
+.egw-comparison-before,
+.egw-comparison-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.egw-comparison-before {
+    clip-path: inset(0 50% 0 0);
+}
+
+.egw-comparison-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: col-resize;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Performance Optimizations
+   ========================================================================== */
+
+/* GPU acceleration for animated elements */
+.egw-gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Prevent layout shifts */
+.egw-no-layout-shift {
+    contain: layout;
+}
+
+/* ==========================================================================
+   Responsive Utilities
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --egw-animation-distance: 50px;
+    }
+
+    .egw-timeline::before {
+        left: 20px;
+    }
+
+    .egw-timeline-marker {
+        left: 20px;
+    }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .egw-marquee-content {
+        animation: none;
+        padding-left: 0;
+    }
+
+    .egw-parallax-image {
+        position: static;
+        height: 100%;
+    }
+}
+
+/* Focus styles for accessibility */
+.egw-widget:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}

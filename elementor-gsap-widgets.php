@@ -1,0 +1,373 @@
+<?php
+/**
+ * Plugin Name: Elementor GSAP Widgets Factory
+ * Description: Advanced Elementor widget library with GSAP-powered scroll animations
+ * Plugin URI: https://github.com/ABConnectz-crm/Elemento-Website-Designer-Widgets
+ * Version: 1.0.0
+ * Author: ABConnectz CRM
+ * Author URI: https://abconnectz.com
+ * Text Domain: elementor-gsap-widgets
+ * Domain Path: /languages
+ * Requires at least: 5.8
+ * Requires PHP: 7.4
+ * License: GPL v3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Elementor tested up to: 3.18.0
+ * Elementor Pro tested up to: 3.18.0
+ */
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// Plugin constants
+define('EGW_VERSION', '1.0.0');
+define('EGW_FILE', __FILE__);
+define('EGW_PATH', plugin_dir_path(__FILE__));
+define('EGW_URL', plugin_dir_url(__FILE__));
+define('EGW_ASSETS_URL', EGW_URL . 'assets/');
+define('EGW_WIDGETS_PATH', EGW_PATH . 'widgets/');
+
+/**
+ * Main Plugin Class
+ */
+final class Elementor_GSAP_Widgets {
+
+    /**
+     * Instance
+     */
+    private static $_instance = null;
+
+    /**
+     * Get Instance
+     */
+    public static function instance() {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        add_action('plugins_loaded', [$this, 'init']);
+    }
+
+    /**
+     * Initialize Plugin
+     */
+    public function init() {
+        // Check if Elementor is installed and activated
+        if (!did_action('elementor/loaded')) {
+            add_action('admin_notices', [$this, 'admin_notice_missing_elementor']);
+            return;
+        }
+
+        // Check for minimum Elementor version
+        if (!version_compare(ELEMENTOR_VERSION, '3.0.0', '>=')) {
+            add_action('admin_notices', [$this, 'admin_notice_minimum_elementor_version']);
+            return;
+        }
+
+        // Check for minimum PHP version
+        if (version_compare(PHP_VERSION, '7.4', '<')) {
+            add_action('admin_notices', [$this, 'admin_notice_minimum_php_version']);
+            return;
+        }
+
+        // Load plugin files
+        $this->includes();
+
+        // Register widgets
+        add_action('elementor/widgets/register', [$this, 'register_widgets']);
+
+        // Register widget categories
+        add_action('elementor/elements/categories_registered', [$this, 'register_widget_categories']);
+
+        // Enqueue scripts and styles
+        add_action('elementor/frontend/after_enqueue_styles', [$this, 'enqueue_frontend_styles']);
+        add_action('elementor/frontend/after_register_scripts', [$this, 'enqueue_frontend_scripts']);
+
+        // Editor scripts
+        add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
+
+        // Localization
+        add_action('init', [$this, 'load_textdomain']);
+    }
+
+    /**
+     * Include required files
+     */
+    private function includes() {
+        // Base widget class
+        require_once EGW_PATH . 'includes/widget-base.php';
+        require_once EGW_PATH . 'includes/animation-handler.php';
+        require_once EGW_PATH . 'includes/helper-functions.php';
+    }
+
+    /**
+     * Register widgets
+     */
+    public function register_widgets($widgets_manager) {
+        // Text Animation Widgets
+        require_once EGW_WIDGETS_PATH . 'text-animations/glassmorphism-text.php';
+        require_once EGW_WIDGETS_PATH . 'text-animations/staggered-text.php';
+        require_once EGW_WIDGETS_PATH . 'text-animations/split-text.php';
+        require_once EGW_WIDGETS_PATH . 'text-animations/gradient-text.php';
+        require_once EGW_WIDGETS_PATH . 'text-animations/typewriter-text.php';
+        require_once EGW_WIDGETS_PATH . 'text-animations/morphing-text.php';
+
+        // Image Animation Widgets
+        require_once EGW_WIDGETS_PATH . 'image-animations/parallax-image.php';
+        require_once EGW_WIDGETS_PATH . 'image-animations/masked-image.php';
+        require_once EGW_WIDGETS_PATH . 'image-animations/reveal-image.php';
+        require_once EGW_WIDGETS_PATH . 'image-animations/zoom-pan-image.php';
+
+        // Background Widgets
+        require_once EGW_WIDGETS_PATH . 'backgrounds/particle-bg.php';
+        require_once EGW_WIDGETS_PATH . 'backgrounds/gradient-bg.php';
+        require_once EGW_WIDGETS_PATH . 'backgrounds/wave-bg.php';
+
+        // UI Element Widgets
+        require_once EGW_WIDGETS_PATH . 'ui-elements/icon-box.php';
+        require_once EGW_WIDGETS_PATH . 'ui-elements/flip-box.php';
+        require_once EGW_WIDGETS_PATH . 'ui-elements/marquee.php';
+        require_once EGW_WIDGETS_PATH . 'ui-elements/timeline.php';
+        require_once EGW_WIDGETS_PATH . 'ui-elements/comparison-slider.php';
+
+        // Register all widgets
+        $widgets_manager->register(new \EGW_Widgets\Glassmorphism_Text_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Staggered_Text_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Split_Text_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Gradient_Text_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Typewriter_Text_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Morphing_Text_Widget());
+
+        $widgets_manager->register(new \EGW_Widgets\Parallax_Image_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Masked_Image_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Reveal_Image_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Zoom_Pan_Image_Widget());
+
+        $widgets_manager->register(new \EGW_Widgets\Particle_Background_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Gradient_Background_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Wave_Background_Widget());
+
+        $widgets_manager->register(new \EGW_Widgets\Icon_Box_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Flip_Box_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Marquee_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Timeline_Widget());
+        $widgets_manager->register(new \EGW_Widgets\Comparison_Slider_Widget());
+    }
+
+    /**
+     * Register widget categories
+     */
+    public function register_widget_categories($elements_manager) {
+        $elements_manager->add_category(
+            'egw-text-animations',
+            [
+                'title' => __('GSAP Text Animations', 'elementor-gsap-widgets'),
+                'icon' => 'fa fa-text-width',
+            ]
+        );
+
+        $elements_manager->add_category(
+            'egw-image-animations',
+            [
+                'title' => __('GSAP Image Animations', 'elementor-gsap-widgets'),
+                'icon' => 'fa fa-image',
+            ]
+        );
+
+        $elements_manager->add_category(
+            'egw-backgrounds',
+            [
+                'title' => __('GSAP Backgrounds', 'elementor-gsap-widgets'),
+                'icon' => 'fa fa-paint-brush',
+            ]
+        );
+
+        $elements_manager->add_category(
+            'egw-ui-elements',
+            [
+                'title' => __('GSAP UI Elements', 'elementor-gsap-widgets'),
+                'icon' => 'fa fa-th-large',
+            ]
+        );
+    }
+
+    /**
+     * Enqueue frontend styles
+     */
+    public function enqueue_frontend_styles() {
+        wp_enqueue_style(
+            'egw-base-animations',
+            EGW_ASSETS_URL . 'css/base-animations.css',
+            [],
+            EGW_VERSION
+        );
+
+        wp_enqueue_style(
+            'egw-widget-styles',
+            EGW_ASSETS_URL . 'css/widget-styles.css',
+            [],
+            EGW_VERSION
+        );
+    }
+
+    /**
+     * Enqueue frontend scripts
+     */
+    public function enqueue_frontend_scripts() {
+        // GSAP Core
+        wp_register_script(
+            'gsap',
+            'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
+            [],
+            '3.12.5',
+            true
+        );
+
+        // ScrollTrigger Plugin
+        wp_register_script(
+            'gsap-scrolltrigger',
+            'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js',
+            ['gsap'],
+            '3.12.5',
+            true
+        );
+
+        // SplitText Plugin (Note: Requires GSAP Club membership or license)
+        wp_register_script(
+            'gsap-splittext',
+            EGW_ASSETS_URL . 'js/vendor/SplitText.min.js',
+            ['gsap'],
+            '3.12.5',
+            true
+        );
+
+        // Flip Plugin
+        wp_register_script(
+            'gsap-flip',
+            'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js',
+            ['gsap'],
+            '3.12.5',
+            true
+        );
+
+        // ScrollSmoother Plugin
+        wp_register_script(
+            'gsap-scrollsmoother',
+            EGW_ASSETS_URL . 'js/vendor/ScrollSmoother.min.js',
+            ['gsap', 'gsap-scrolltrigger'],
+            '3.12.5',
+            true
+        );
+
+        // Custom animation utilities
+        wp_enqueue_script(
+            'egw-animation-utilities',
+            EGW_ASSETS_URL . 'js/animation-utilities.js',
+            ['jquery', 'gsap', 'gsap-scrolltrigger'],
+            EGW_VERSION,
+            true
+        );
+
+        // GSAP Config
+        wp_enqueue_script(
+            'egw-gsap-config',
+            EGW_ASSETS_URL . 'js/gsap-config.js',
+            ['jquery', 'gsap', 'gsap-scrolltrigger'],
+            EGW_VERSION,
+            true
+        );
+
+        // ScrollTrigger Init
+        wp_enqueue_script(
+            'egw-scrolltrigger-init',
+            EGW_ASSETS_URL . 'js/scroll-trigger-init.js',
+            ['egw-gsap-config'],
+            EGW_VERSION,
+            true
+        );
+
+        // Localize script with settings
+        wp_localize_script('egw-gsap-config', 'egwSettings', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('egw-nonce'),
+            'isEditor' => \Elementor\Plugin::$instance->editor->is_edit_mode(),
+            'reducedMotion' => false, // Can be made dynamic from settings
+            'debugMode' => false, // Can be made dynamic from settings
+        ]);
+    }
+
+    /**
+     * Enqueue editor scripts
+     */
+    public function enqueue_editor_scripts() {
+        wp_enqueue_script(
+            'egw-editor',
+            EGW_ASSETS_URL . 'js/editor.js',
+            ['jquery', 'elementor-editor'],
+            EGW_VERSION,
+            true
+        );
+    }
+
+    /**
+     * Load plugin textdomain
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain(
+            'elementor-gsap-widgets',
+            false,
+            dirname(plugin_basename(__FILE__)) . '/languages'
+        );
+    }
+
+    /**
+     * Admin notice for missing Elementor
+     */
+    public function admin_notice_missing_elementor() {
+        $message = sprintf(
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'elementor-gsap-widgets'),
+            '<strong>' . esc_html__('Elementor GSAP Widgets', 'elementor-gsap-widgets') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'elementor-gsap-widgets') . '</strong>'
+        );
+
+        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
+    }
+
+    /**
+     * Admin notice for minimum Elementor version
+     */
+    public function admin_notice_minimum_elementor_version() {
+        $message = sprintf(
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-gsap-widgets'),
+            '<strong>' . esc_html__('Elementor GSAP Widgets', 'elementor-gsap-widgets') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'elementor-gsap-widgets') . '</strong>',
+            '3.0.0'
+        );
+
+        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
+    }
+
+    /**
+     * Admin notice for minimum PHP version
+     */
+    public function admin_notice_minimum_php_version() {
+        $message = sprintf(
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-gsap-widgets'),
+            '<strong>' . esc_html__('Elementor GSAP Widgets', 'elementor-gsap-widgets') . '</strong>',
+            '<strong>' . esc_html__('PHP', 'elementor-gsap-widgets') . '</strong>',
+            '7.4'
+        );
+
+        printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
+    }
+}
+
+// Initialize plugin
+Elementor_GSAP_Widgets::instance();
