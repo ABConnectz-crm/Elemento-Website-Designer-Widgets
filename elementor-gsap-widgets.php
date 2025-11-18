@@ -103,6 +103,7 @@ final class Elementor_GSAP_Widgets {
     private function includes() {
         // Base widget class
         require_once EGW_PATH . 'includes/widget-base.php';
+        require_once EGW_PATH . 'includes/heading-widget-base.php';
         require_once EGW_PATH . 'includes/animation-handler.php';
         require_once EGW_PATH . 'includes/helper-functions.php';
     }
@@ -146,6 +147,30 @@ final class Elementor_GSAP_Widgets {
         require_once EGW_WIDGETS_PATH . 'ui-elements/scrollytelling-pin.php';
         require_once EGW_WIDGETS_PATH . 'ui-elements/horizontal-scroll.php';
 
+        // Professional Heading Widgets
+        require_once EGW_WIDGETS_PATH . 'headings/fade-in-stagger.php';
+        require_once EGW_WIDGETS_PATH . 'headings/slide-up-reveal.php';
+        require_once EGW_WIDGETS_PATH . 'headings/letter-spacing-expand.php';
+        require_once EGW_WIDGETS_PATH . 'headings/blur-to-focus.php';
+        require_once EGW_WIDGETS_PATH . 'headings/scale-pulse.php';
+        require_once EGW_WIDGETS_PATH . 'headings/split-color-reveal.php';
+        require_once EGW_WIDGETS_PATH . 'headings/underline-draw.php';
+        require_once EGW_WIDGETS_PATH . 'headings/glow-pulse.php';
+        require_once EGW_WIDGETS_PATH . 'headings/word-rotate-in.php';
+        require_once EGW_WIDGETS_PATH . 'headings/minimal-fade-slide.php';
+
+        // Funky Heading Widgets
+        require_once EGW_WIDGETS_PATH . 'headings/elastic-bounce.php';
+        require_once EGW_WIDGETS_PATH . 'headings/wave-motion.php';
+        require_once EGW_WIDGETS_PATH . 'headings/scramble-text.php';
+        require_once EGW_WIDGETS_PATH . 'headings/neon-flicker.php';
+        require_once EGW_WIDGETS_PATH . 'headings/glitch-reveal.php';
+        require_once EGW_WIDGETS_PATH . 'headings/typewriter-cursor.php';
+        require_once EGW_WIDGETS_PATH . 'headings/random-scatter.php';
+        require_once EGW_WIDGETS_PATH . 'headings/flip-cards.php';
+        require_once EGW_WIDGETS_PATH . 'headings/magnetic-pull.php';
+        require_once EGW_WIDGETS_PATH . 'headings/liquid-morph.php';
+
         // Register all widgets
         $widgets_manager->register(new \EGW_Widgets\Glassmorphism_Text_Widget());
         $widgets_manager->register(new \EGW_Widgets\Staggered_Text_Widget());
@@ -177,6 +202,30 @@ final class Elementor_GSAP_Widgets {
         $widgets_manager->register(new \EGW_Widgets\Advanced_ClipPath_Reveal_Widget());
         $widgets_manager->register(new \EGW_Widgets\Scrollytelling_Pin_Widget());
         $widgets_manager->register(new \EGW_Widgets\Horizontal_Scroll_Widget());
+
+        // Professional Heading Widgets
+        $widgets_manager->register(new \EGW_Widgets\Fade_In_Stagger_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Slide_Up_Reveal_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Letter_Spacing_Expand_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Blur_To_Focus_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Scale_Pulse_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Split_Color_Reveal_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Underline_Draw_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Glow_Pulse_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Word_Rotate_In_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Minimal_Fade_Slide_Heading());
+
+        // Funky Heading Widgets
+        $widgets_manager->register(new \EGW_Widgets\Elastic_Bounce_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Wave_Motion_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Scramble_Text_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Neon_Flicker_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Glitch_Reveal_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Typewriter_Cursor_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Random_Scatter_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Flip_Cards_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Magnetic_Pull_Heading());
+        $widgets_manager->register(new \EGW_Widgets\Liquid_Morph_Heading());
     }
 
     /**
@@ -339,6 +388,15 @@ final class Elementor_GSAP_Widgets {
             'egw-horizontal-scroll-handler',
             EGW_ASSETS_URL . 'js/widgets/horizontal-scroll-handler.js',
             ['jquery', 'gsap', 'gsap-scrolltrigger'],
+            EGW_VERSION,
+            true
+        );
+
+        // Heading Animations Handler (handles all 20 heading widgets)
+        wp_register_script(
+            'egw-heading-animations',
+            EGW_ASSETS_URL . 'js/heading-animations.js',
+            ['jquery', 'gsap', 'gsap-scrolltrigger', 'egw-text-splitter'],
             EGW_VERSION,
             true
         );

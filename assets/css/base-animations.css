@@ -694,3 +694,102 @@
         font-size: 24px;
     }
 }
+
+/* ==========================================================================
+   Heading Widgets (20 Total: 10 Professional + 10 Funky)
+   ========================================================================== */
+
+/* Common heading widget styles */
+.egw-heading-widget {
+    position: relative;
+    overflow: visible;
+}
+
+.egw-heading-container {
+    position: relative;
+}
+
+.egw-animated-heading {
+    display: block;
+    position: relative;
+}
+
+/* Text splitting common styles */
+.egw-animated-heading .egw-word,
+.egw-animated-heading .egw-char,
+.egw-animated-heading .egw-line {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.egw-animated-heading .egw-line {
+    display: block;
+}
+
+/* Professional heading styles */
+.egw-heading-fade-stagger .egw-word,
+.egw-heading-slide-up .egw-word,
+.egw-heading-slide-up .egw-line {
+    transform-origin: 50% 100%;
+}
+
+/* Funky heading styles */
+.egw-funky-heading .egw-char {
+    transform-style: preserve-3d;
+}
+
+/* Typewriter cursor */
+.egw-typewriter-cursor {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+/* Glitch effect layers */
+.egw-heading-glitch {
+    position: relative;
+}
+
+/* Neon glow effect */
+.egw-heading-neon-flicker {
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* 3D perspective for rotating text */
+.egw-heading-word-rotate,
+.egw-heading-flip-cards,
+.egw-heading-magnetic {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.egw-heading-word-rotate .egw-word,
+.egw-heading-flip-cards .egw-char {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Wave motion container */
+.egw-heading-wave-motion .egw-char {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+/* Responsive heading adjustments */
+@media (max-width: 768px) {
+    /* Reduce complexity on mobile */
+    .egw-heading-widget {
+        perspective: 800px;
+    }
+
+    /* Simplify 3D effects */
+    .egw-funky-heading .egw-char {
+        transform-style: flat;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further simplification */
+    .egw-animated-heading {
+        font-size: 90% !important;
+    }
+}
