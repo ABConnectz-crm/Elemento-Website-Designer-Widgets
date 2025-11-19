@@ -2,10 +2,9 @@
 /**
  * Plugin Name: Elementor GSAP Widgets Factory
  * Description: Advanced Elementor widget library with GSAP-powered scroll animations
- * Plugin URI: https://github.com/ABConnectz-crm/Elemento-Website-Designer-Widgets
  * Version: 1.0.0
- * Author: ABConnectz CRM
- * Author URI: https://abconnectz.com
+ * Author: Hiraya Digital
+ * Author URI: https://hiraya.digital
  * Text Domain: elementor-gsap-widgets
  * Domain Path: /languages
  * Requires at least: 5.8
