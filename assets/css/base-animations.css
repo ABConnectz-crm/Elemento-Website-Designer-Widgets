@@ -447,3 +447,349 @@
     outline: 2px solid currentColor;
     outline-offset: 4px;
 }
+
+/* ==========================================================================
+   Advanced Widgets - Awwwards Style (2024-2025)
+   ========================================================================== */
+
+/* Kinetic 3D Cylinder Text */
+.egw-kinetic-3d-widget {
+    position: relative;
+    overflow: visible;
+}
+
+.egw-kinetic-3d-container {
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+}
+
+.egw-kinetic-3d-text {
+    transform-style: preserve-3d;
+    position: relative;
+    display: inline-block;
+}
+
+.egw-3d-char {
+    display: inline-block;
+    transform-style: preserve-3d;
+    will-change: transform, opacity, filter;
+    backface-visibility: visible;
+}
+
+/* Skew Reveal Text */
+.egw-skew-reveal-widget {
+    position: relative;
+}
+
+.egw-skew-reveal-container {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.egw-skew-reveal-text {
+    transform-style: preserve-3d;
+}
+
+.egw-line,
+.egw-word,
+.egw-char {
+    display: inline-block;
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+}
+
+.egw-line {
+    display: block;
+    overflow: hidden;
+}
+
+/* Advanced Clip-Path Reveal */
+.egw-clippath-reveal-widget {
+    position: relative;
+}
+
+.egw-clippath-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-clippath-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: clip-path, transform;
+}
+
+.egw-clippath-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.egw-text-content {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Scrollytelling Pin Container */
+.egw-scrollytelling-pin-widget {
+    position: relative;
+}
+
+.egw-pin-container {
+    position: relative;
+}
+
+.egw-pin-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    will-change: transform, filter, opacity;
+}
+
+.egw-panel-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    max-width: 800px;
+}
+
+.egw-panel-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.egw-panel-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Horizontal Scroll Section */
+.egw-horizontal-scroll-widget {
+    position: relative;
+}
+
+.egw-h-scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-h-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
+}
+
+.egw-h-section {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.egw-section-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    max-width: 600px;
+    will-change: transform, opacity;
+}
+
+.egw-section-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   3D Transform Utilities
+   ========================================================================== */
+
+.egw-3d-enabled {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.egw-preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.egw-backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   Performance Optimizations for Advanced Widgets
+   ========================================================================== */
+
+/* Force GPU acceleration */
+.egw-kinetic-3d-text,
+.egw-skew-reveal-text,
+.egw-pin-panel,
+.egw-h-scroll-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Optimize repaints */
+.egw-3d-char,
+.egw-line,
+.egw-word,
+.egw-char {
+    contain: layout style;
+}
+
+/* ==========================================================================
+   Responsive Adjustments for Advanced Widgets
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .egw-panel-content h2,
+    .egw-section-content h2 {
+        font-size: 36px;
+    }
+
+    .egw-panel-content,
+    .egw-section-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Reduce 3D effects on mobile for performance */
+    .egw-kinetic-3d-container,
+    .egw-skew-reveal-container {
+        perspective: 800px;
+    }
+
+    .egw-panel-content h2,
+    .egw-section-content h2 {
+        font-size: 28px;
+    }
+
+    .egw-panel-content,
+    .egw-section-content {
+        padding: 20px;
+    }
+
+    /* Simplify horizontal scroll on mobile */
+    .egw-h-section {
+        min-width: 80vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .egw-panel-content h2,
+    .egw-section-content h2 {
+        font-size: 24px;
+    }
+}
+
+/* ==========================================================================
+   Heading Widgets (20 Total: 10 Professional + 10 Funky)
+   ========================================================================== */
+
+/* Common heading widget styles */
+.egw-heading-widget {
+    position: relative;
+    overflow: visible;
+}
+
+.egw-heading-container {
+    position: relative;
+}
+
+.egw-animated-heading {
+    display: block;
+    position: relative;
+}
+
+/* Text splitting common styles */
+.egw-animated-heading .egw-word,
+.egw-animated-heading .egw-char,
+.egw-animated-heading .egw-line {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.egw-animated-heading .egw-line {
+    display: block;
+}
+
+/* Professional heading styles */
+.egw-heading-fade-stagger .egw-word,
+.egw-heading-slide-up .egw-word,
+.egw-heading-slide-up .egw-line {
+    transform-origin: 50% 100%;
+}
+
+/* Funky heading styles */
+.egw-funky-heading .egw-char {
+    transform-style: preserve-3d;
+}
+
+/* Typewriter cursor */
+.egw-typewriter-cursor {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+/* Glitch effect layers */
+.egw-heading-glitch {
+    position: relative;
+}
+
+/* Neon glow effect */
+.egw-heading-neon-flicker {
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* 3D perspective for rotating text */
+.egw-heading-word-rotate,
+.egw-heading-flip-cards,
+.egw-heading-magnetic {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.egw-heading-word-rotate .egw-word,
+.egw-heading-flip-cards .egw-char {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Wave motion container */
+.egw-heading-wave-motion .egw-char {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+/* Responsive heading adjustments */
+@media (max-width: 768px) {
+    /* Reduce complexity on mobile */
+    .egw-heading-widget {
+        perspective: 800px;
+    }
+
+    /* Simplify 3D effects */
+    .egw-funky-heading .egw-char {
+        transform-style: flat;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further simplification */
+    .egw-animated-heading {
+        font-size: 90% !important;
+    }
+}
