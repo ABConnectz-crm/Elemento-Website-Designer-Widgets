@@ -77,7 +77,19 @@ final class Elementor_GSAP_Widgets {
             return;
         }
 
-        // Load plugin files
+        // Wait for Elementor to fully initialize before loading our files
+        add_action('elementor/init', [$this, 'on_elementor_init']);
+
+        // Localization
+        add_action('init', [$this, 'load_textdomain']);
+    }
+
+    /**
+     * On Elementor Init
+     * Fires after Elementor is fully loaded and classes are available
+     */
+    public function on_elementor_init() {
+        // Load plugin files - now Elementor classes are available
         $this->includes();
 
         // Register widgets
@@ -92,9 +104,6 @@ final class Elementor_GSAP_Widgets {
 
         // Editor scripts
         add_action('elementor/editor/after_enqueue_scripts', [$this, 'enqueue_editor_scripts']);
-
-        // Localization
-        add_action('init', [$this, 'load_textdomain']);
     }
 
     /**
