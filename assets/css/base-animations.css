@@ -114,28 +114,32 @@
 .egw-parallax-container {
     position: relative;
     overflow: hidden;
+    height: 100%;
 }
 
 .egw-parallax-image {
     position: absolute;
-    top: -20%;
+    top: -10%;
     left: 0;
     width: 100%;
-    height: 140%;
+    height: 120%;
     object-fit: cover;
     will-change: transform;
+    display: block;
 }
 
 /* Masked image */
 .egw-masked-image {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    display: inline-block;
 }
 
 .egw-masked-image img {
     display: block;
     width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
 /* Clip path animations */
@@ -336,7 +340,6 @@
 .egw-timeline-item {
     position: relative;
     margin-bottom: 50px;
-    opacity: 0;
     will-change: opacity, transform;
 }
 
@@ -468,6 +471,7 @@
     transform-style: preserve-3d;
     position: relative;
     display: inline-block;
+    white-space: nowrap;
 }
 
 .egw-3d-char {
@@ -475,6 +479,7 @@
     transform-style: preserve-3d;
     will-change: transform, opacity, filter;
     backface-visibility: visible;
+    position: relative;
 }
 
 /* Skew Reveal Text */
@@ -507,11 +512,12 @@
 /* Advanced Clip-Path Reveal */
 .egw-clippath-reveal-widget {
     position: relative;
+    overflow: visible;
 }
 
 .egw-clippath-wrapper {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .egw-clippath-content {
@@ -520,6 +526,7 @@
     align-items: center;
     justify-content: center;
     will-change: clip-path, transform;
+    position: relative;
 }
 
 .egw-clippath-content img {
@@ -537,10 +544,12 @@
 /* Scrollytelling Pin Container */
 .egw-scrollytelling-pin-widget {
     position: relative;
+    overflow: visible;
 }
 
 .egw-pin-container {
     position: relative;
+    overflow: visible;
 }
 
 .egw-pin-panel {
@@ -550,6 +559,7 @@
     justify-content: center;
     overflow: hidden;
     will-change: transform, filter, opacity;
+    width: 100%;
 }
 
 .egw-panel-content {
@@ -712,6 +722,8 @@
 .egw-animated-heading {
     display: block;
     position: relative;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Text splitting common styles */
@@ -720,6 +732,7 @@
 .egw-animated-heading .egw-line {
     display: inline-block;
     will-change: transform, opacity;
+    position: relative;
 }
 
 .egw-animated-heading .egw-line {
