@@ -65,6 +65,9 @@
                     gsap.set(panel, { zIndex: panels.length - index });
                     gsap.set(nextPanel, { zIndex: panels.length - index - 1 });
 
+                    // Set initial dark state for next panel
+                    gsap.set(nextPanel, { filter: 'brightness(0)' });
+
                     // Create animation based on effect type
                     const animation = this.createAnimation(panel, nextPanel, settings, index);
 
@@ -105,13 +108,18 @@
 
             switch (settings.effectType) {
                 case 'stack':
-                    // Stacking cards effect
+                    // Stacking cards effect - current panel scales down and darkens
                     tl.to(currentPanel, {
                         scale: settings.scaleAmount,
                         y: -settings.stackOffset,
                         filter: 'brightness(0.8)',
                         ease: 'none'
-                    });
+                    }, 0);
+                    // Next panel fades in from black to color
+                    tl.to(nextPanel, {
+                        filter: 'brightness(1)',
+                        ease: 'none'
+                    }, 0);
                     break;
 
                 case 'slide':
@@ -119,7 +127,11 @@
                     tl.to(currentPanel, {
                         y: '-100%',
                         ease: 'none'
-                    });
+                    }, 0);
+                    tl.to(nextPanel, {
+                        filter: 'brightness(1)',
+                        ease: 'none'
+                    }, 0);
                     break;
 
                 case 'fade-scale':
@@ -129,7 +141,11 @@
                         opacity: 0.5,
                         filter: 'blur(10px)',
                         ease: 'none'
-                    });
+                    }, 0);
+                    tl.to(nextPanel, {
+                        filter: 'brightness(1)',
+                        ease: 'none'
+                    }, 0);
                     break;
 
                 case 'rotate':
@@ -140,7 +156,11 @@
                         transformOrigin: 'center top',
                         filter: 'brightness(0.7)',
                         ease: 'none'
-                    });
+                    }, 0);
+                    tl.to(nextPanel, {
+                        filter: 'brightness(1)',
+                        ease: 'none'
+                    }, 0);
                     break;
 
                 default:
@@ -148,7 +168,11 @@
                         scale: settings.scaleAmount,
                         y: -settings.stackOffset,
                         ease: 'none'
-                    });
+                    }, 0);
+                    tl.to(nextPanel, {
+                        filter: 'brightness(1)',
+                        ease: 'none'
+                    }, 0);
             }
 
             return tl;
