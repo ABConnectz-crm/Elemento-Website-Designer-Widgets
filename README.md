@@ -358,7 +358,7 @@ This project is licensed under the GPL v3 or later - see the LICENSE file for de
 
 - **GSAP** - [GreenSock Animation Platform](https://greensock.com/gsap/)
 - **Elementor** - [Elementor Page Builder](https://elementor.com/)
-- **ABConnectz CRM** - Plugin development
+- **Hiraya Digital** - Plugin development by Rajesh Kumar
 
 ## 📞 Support
 
@@ -366,7 +366,7 @@ For support, please:
 1. Check the documentation above
 2. Review the troubleshooting section
 3. Open an issue on GitHub
-4. Contact: support@abconnectz.com
+4. Contact: support@hiraya.digital
 
 ## 🔗 Links
 
@@ -376,4 +376,4 @@ For support, please:
 
 ---
 
-Made with ❤️ by ABConnectz CRM
+Made with ❤️ by Hiraya Digital | Developed by Rajesh Kumar

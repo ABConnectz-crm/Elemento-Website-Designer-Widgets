@@ -3,7 +3,7 @@
  * Plugin Name: Elementor GSAP Widgets Factory
  * Description: Advanced Elementor widget library with GSAP-powered scroll animations
  * Version: 1.0.0
- * Author: Hiraya Digital
+ * Author: Rajesh Kumar
  * Author URI: https://hiraya.digital
  * Text Domain: elementor-gsap-widgets
  * Domain Path: /languages
