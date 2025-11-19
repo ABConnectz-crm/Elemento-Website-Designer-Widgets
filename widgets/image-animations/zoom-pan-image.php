@@ -97,9 +97,8 @@ class Zoom_Pan_Image_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
-        if ($this->get_settings_for_display()['trigger_type'] === 'scroll') {
-            $this->add_scrolltrigger_controls();
-        }
+        // Always register ScrollTrigger controls, use condition to show/hide
+        $this->add_scrolltrigger_controls();
     }
 
     protected function render() {
