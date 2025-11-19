@@ -347,8 +347,27 @@ class Kinetic_3D_Text_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
-        // Add common animation controls
-        $this->add_animation_controls();
+        // Add specific animation controls for Kinetic 3D
+        $this->start_controls_section(
+            'section_gsap_animation',
+            [
+                'label' => __('GSAP Animation', 'elementor-gsap-widgets'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'animation_type',
+            [
+                'label' => __('Animation Type', 'elementor-gsap-widgets'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'auto-rotate',
+                'options' => $this->get_animation_types(),
+            ]
+        );
+
+        $this->end_controls_section();
+
         $this->add_scrolltrigger_controls();
     }
 

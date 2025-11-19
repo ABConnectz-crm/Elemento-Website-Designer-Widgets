@@ -121,11 +121,14 @@ class Masked_Image_Widget extends Widget_Base {
         $inline_style = isset($clip_path_styles[$mask_type]) ? $clip_path_styles[$mask_type] : '';
         $anim_attrs = $this->get_animation_attributes($settings);
 
+        // Add aspect ratio container style for circle to prevent cropping
+        $container_style = $mask_type === 'circle' ? 'aspect-ratio: 1/1; max-width: 100%;' : '';
+
         ?>
         <div class="egw-widget egw-masked-image-widget">
-            <div class="egw-masked-image" <?php echo $this->render_attributes_string($anim_attrs); ?>>
+            <div class="egw-masked-image" style="<?php echo esc_attr($container_style); ?>" <?php echo $this->render_attributes_string($anim_attrs); ?>>
                 <img src="<?php echo esc_url($image_url); ?>"
-                     style="<?php echo esc_attr($inline_style); ?>"
+                     style="<?php echo esc_attr($inline_style); ?> width: 100%; height: 100%; object-fit: cover;"
                      alt="">
             </div>
         </div>

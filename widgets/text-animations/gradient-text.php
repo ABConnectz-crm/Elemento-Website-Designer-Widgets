@@ -147,7 +147,7 @@ class Gradient_Text_Widget extends Widget_Base {
 
         ?>
         <div class="egw-widget egw-gradient-text-widget">
-            <<?php echo esc_attr($tag); ?> class="egw-gradient-text-content egw-gradient-text <?php echo esc_attr($animate_class); ?>" style="background: <?php echo esc_attr($gradient); ?>;" <?php echo $this->render_attributes_string($anim_attrs); ?>>
+            <<?php echo esc_attr($tag); ?> class="egw-gradient-text-content egw-gradient-text <?php echo esc_attr($animate_class); ?>" style="background: <?php echo esc_attr($gradient); ?>; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;" <?php echo $this->render_attributes_string($anim_attrs); ?>>
                 <?php echo esc_html($settings['text']); ?>
             </<?php echo esc_attr($tag); ?>>
         </div>
